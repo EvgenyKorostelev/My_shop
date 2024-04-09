@@ -1,6 +1,6 @@
-package ru.shop.worker.service;
+package ru.shop.catalogue.service;
 
-import ru.shop.worker.entity.Product;
+import ru.shop.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

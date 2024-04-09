@@ -1,9 +1,9 @@
-package ru.shop.worker.service;
+package ru.shop.catalogue.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.shop.worker.entity.Product;
-import ru.shop.worker.repository.IProductRepository;
+import ru.shop.catalogue.entity.Product;
+import ru.shop.catalogue.repository.IProductRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;

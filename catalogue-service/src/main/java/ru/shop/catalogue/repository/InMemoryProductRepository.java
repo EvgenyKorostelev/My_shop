@@ -1,10 +1,9 @@
-package ru.shop.worker.repository;
+package ru.shop.catalogue.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.shop.worker.entity.Product;
+import ru.shop.catalogue.entity.Product;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 @Repository
 public class InMemoryProductRepository implements IProductRepository {
