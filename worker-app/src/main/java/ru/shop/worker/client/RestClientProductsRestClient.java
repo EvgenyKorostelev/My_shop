@@ -26,22 +26,22 @@ public class RestClientProductsRestClient implements IProductsRestClient {
 
 
     @Override
-    public List<Product> findAllProducts() {
+    public List<Product> findAllProducts(String filter) {
         return this.restClient
                 .get()
-                .uri("/catalogue-api/products")
+                .uri("/catalogue-api/products?filter={filter}", filter)
                 .retrieve()
                 .body(PRODUCTS_TYPE_REFERENCE);
     }
 
     @Override
-    public Product createProduct(String productName, String description) {
+    public Product createProduct(String title, String description) {
         try {
             return this.restClient
                     .post()
                     .uri("/catalogue-api/products")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(new NewProductPayload(productName, description))
+                    .body(new NewProductPayload(title, description))
                     .retrieve()
                     .body(Product.class);
         }catch (HttpClientErrorException.BadRequest exception){
@@ -66,13 +66,13 @@ public class RestClientProductsRestClient implements IProductsRestClient {
     }
 
     @Override
-    public void updateProduct(int productId, String productName, String description) {
+    public void updateProduct(int productId, String title, String description) {
         try {
             this.restClient
                     .patch()
                     .uri("/catalogue-api/products/productId", productId)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(new UpdateProductPayload(productName, description))
+                    .body(new UpdateProductPayload(title, description))
                     .retrieve()
                     .toBodilessEntity();
         }catch (HttpClientErrorException.BadRequest exception){

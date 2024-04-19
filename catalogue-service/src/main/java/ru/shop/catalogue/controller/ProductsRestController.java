@@ -2,22 +2,18 @@ package ru.shop.catalogue.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.MessageSource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ProblemDetail;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ru.shop.catalogue.controller.payload.NewProductPayload;
 import ru.shop.catalogue.entity.Product;
 import ru.shop.catalogue.service.IProductService;
 
-import java.util.List;
-import java.util.Locale;
+
 import java.util.Map;
 
 @RestController
@@ -28,8 +24,8 @@ public class ProductsRestController {
     private final IProductService productService;
 
     @GetMapping
-    public List<Product> findProducts(){
-        return this.productService.findAllProducts();
+    public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter){
+        return this.productService.findAllProducts(filter);
     }
 
     @PostMapping()
@@ -44,7 +40,7 @@ public class ProductsRestController {
                 throw new BindException(bindingResult);
             }
         }else {
-            Product product = this.productService.createProduct(payload.productName(), payload.description());
+            Product product = this.productService.createProduct(payload.title(), payload.description());
             return ResponseEntity
                     .created(uriComponentsBuilder
                             .replacePath("/catalogue-api/products/{productId}")

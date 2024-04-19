@@ -2,24 +2,31 @@ package ru.shop.catalogue.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.shop.catalogue.entity.Product;
 import ru.shop.catalogue.repository.IProductRepository;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class StandartProductService implements IProductService {
+
     private final IProductRepository productRepository;
-    
+
     @Override
-    public List<Product> findAllProducts() {
-        return this.productRepository.findAll();
+    public Iterable<Product> findAllProducts(String filter) {
+        if(filter != null && !filter.isBlank()){
+            return this.productRepository.findAllByTitleLikeIgnoreCase("%" + filter + "%");
+        } else {
+            return this.productRepository.findAll();
+        }
+
     }
 
     @Override
+    @Transactional
     public Product createProduct(String productName, String description) {
         return this.productRepository.save(new Product(null, productName, description));
     }
@@ -30,10 +37,11 @@ public class StandartProductService implements IProductService {
     }
 
     @Override
-    public void updateProduct(Integer id, String productName, String description) {
+    @Transactional
+    public void updateProduct(Integer id, String title, String description) {
         this.productRepository.findById(id)
                 .ifPresentOrElse(product -> {
-                    product.setProductName(productName);
+                    product.setTitle(title);
                     product.setDescription(description);
                 }, () -> {
                     throw new NoSuchElementException();
@@ -41,6 +49,7 @@ public class StandartProductService implements IProductService {
     }
 
     @Override
+    @Transactional
     public void deleteProduct(Integer id) {
         this.productRepository.deleteById(id);
     }

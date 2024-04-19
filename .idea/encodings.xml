@@ -3,9 +3,10 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/catalogue-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/catalogue-service/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/catalogue-service/src/main/resources/application-standalone.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/catalogue-service/src/main/resources/db/migration/V24_1_1__Basic_schema.sql" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/worker-app/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/worker-app/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

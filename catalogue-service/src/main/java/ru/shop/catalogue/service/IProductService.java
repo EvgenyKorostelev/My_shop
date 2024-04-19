@@ -2,11 +2,10 @@ package ru.shop.catalogue.service;
 
 import ru.shop.catalogue.entity.Product;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface IProductService {
-    List<Product> findAllProducts();
+    Iterable<Product> findAllProducts(String filter);
 
     Product createProduct(String s, String description);
 

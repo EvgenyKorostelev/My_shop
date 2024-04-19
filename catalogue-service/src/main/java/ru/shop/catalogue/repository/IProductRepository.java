@@ -1,16 +1,14 @@
 package ru.shop.catalogue.repository;
 
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import ru.shop.catalogue.entity.Product;
 
-import java.util.List;
-import java.util.Optional;
 
-public interface IProductRepository {
-    List<Product> findAll();
+public interface IProductRepository extends CrudRepository<Product, Integer> {
 
-    Product save(Product product);
+    @Query(name = "Product.Product.findByTitleLikeIgnoringCase", nativeQuery = true)
+    Iterable<Product> findAllByTitleLikeIgnoreCase(@Param("filter") String filter); //select * from catalogue.t_product where c_title ilike : filter
 
-    Optional<Product> findById(Integer productId);
-
-    void deleteById(Integer id);
 }

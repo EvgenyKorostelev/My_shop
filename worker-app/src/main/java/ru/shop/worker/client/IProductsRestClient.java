@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface IProductsRestClient {
 
-    List<Product> findAllProducts();
+    List<Product> findAllProducts(String filter);
 
-    Product createProduct(String nameProduct, String description);
+    Product createProduct(String title, String description);
 
     Optional<Product> findProduct(int productId);
 
-    void updateProduct(int productId, String productName, String description);
+    void updateProduct(int productId, String title, String description);
 
     void deleteProduct(int productId);
 }
