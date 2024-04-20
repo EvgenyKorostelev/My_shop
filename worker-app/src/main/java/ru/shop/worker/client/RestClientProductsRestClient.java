@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class RestClientProductsRestClient implements IProductsRestClient {
+public class RestClientProductsRestClient implements ProductsRestClient {
 
     private static final ParameterizedTypeReference<List<Product>> PRODUCTS_TYPE_REFERENCE =
             new ParameterizedTypeReference<>() {
@@ -70,7 +70,7 @@ public class RestClientProductsRestClient implements IProductsRestClient {
         try {
             this.restClient
                     .patch()
-                    .uri("/catalogue-api/products/productId", productId)
+                    .uri("/catalogue-api/products/{productId}", productId)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(new UpdateProductPayload(title, description))
                     .retrieve()

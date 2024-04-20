@@ -24,8 +24,8 @@ public class BadRequestControllerAdvice {
                                                              Locale locale){
         ProblemDetail problemDetail = ProblemDetail
                 .forStatusAndDetail(HttpStatus.BAD_REQUEST,
-                        this.messageSource.getMessage("errors.400.productName",new Object[0],
-                                "errors.400.productName", locale));
+                        this.messageSource.getMessage("errors.400.title",new Object[0],
+                                "errors.400.title", locale));
         problemDetail.setProperty("errors",
                 exception.getAllErrors().stream()
                         .map(ObjectError::getDefaultMessage)

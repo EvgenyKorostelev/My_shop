@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.shop.worker.client.BadRequestException;
-import ru.shop.worker.client.IProductsRestClient;
+import ru.shop.worker.client.ProductsRestClient;
 import ru.shop.worker.controller.payload.UpdateProductPayload;
 import ru.shop.worker.entity.Product;
 
@@ -21,7 +21,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final IProductsRestClient productsRestClient;
+    private final ProductsRestClient productsRestClient;
 
     private final MessageSource messageSource;
 

@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.shop.catalogue.controller.payload.UpdateProductPayload;
 import ru.shop.catalogue.entity.Product;
-import ru.shop.catalogue.service.IProductService;
+import ru.shop.catalogue.service.ProductService;
 
 import java.util.Locale;
 import java.util.NoSuchElementException;
@@ -22,7 +22,7 @@ import java.util.NoSuchElementException;
 @RequestMapping("catalogue-api/products/{productId:\\d+}")
 public class ProductRestController {
 
-    private final IProductService productService;
+    private final ProductService productService;
 
     private final MessageSource messageSource;
 

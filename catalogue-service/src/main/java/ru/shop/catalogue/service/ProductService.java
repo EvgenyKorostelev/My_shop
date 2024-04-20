@@ -4,7 +4,7 @@ import ru.shop.catalogue.entity.Product;
 
 import java.util.Optional;
 
-public interface IProductService {
+public interface ProductService {
     Iterable<Product> findAllProducts(String filter);
 
     Product createProduct(String s, String description);

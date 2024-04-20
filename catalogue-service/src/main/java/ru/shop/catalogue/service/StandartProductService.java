@@ -4,16 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shop.catalogue.entity.Product;
-import ru.shop.catalogue.repository.IProductRepository;
+import ru.shop.catalogue.repository.ProductRepository;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StandartProductService implements IProductService {
+public class StandartProductService implements ProductService {
 
-    private final IProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public Iterable<Product> findAllProducts(String filter) {

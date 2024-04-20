@@ -5,7 +5,7 @@ import ru.shop.worker.entity.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface IProductsRestClient {
+public interface ProductsRestClient {
 
     List<Product> findAllProducts(String filter);
 

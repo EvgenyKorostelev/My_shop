@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.shop.worker.client.BadRequestException;
-import ru.shop.worker.client.IProductsRestClient;
+import ru.shop.worker.client.ProductsRestClient;
 import ru.shop.worker.controller.payload.NewProductPayload;
 import ru.shop.worker.entity.Product;
 
@@ -18,7 +18,7 @@ import ru.shop.worker.entity.Product;
 @RequestMapping("catalogue/products")
 public class ProductsController {
 
-    private final IProductsRestClient productsRestClient;
+    private final ProductsRestClient productsRestClient;
 
     @GetMapping("list")
     public String getProductsList(Model model, @RequestParam(name = "filter", required = false) String filter) {
