@@ -1,4 +1,4 @@
-My_shop:
+shop:
   catalogue:
     service:
       uri: http://localhost:8081
